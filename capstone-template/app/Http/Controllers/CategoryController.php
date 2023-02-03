@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Item;
 use Session;
+use Illuminate\Support\Facades\Log;
 
 class CategoryController extends Controller
 {
@@ -13,6 +15,10 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+   
+
+
     public function index()
     {
         $categories = Category::orderBy('name','ASC')->paginate(10);
@@ -71,6 +77,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+       
         $category = Category::find($id);
         return view('categories.edit')->with('category',$category);
     }
@@ -108,7 +115,26 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
-    }
+     {
+         //$category = Category::find($id);
+ 
+         //$category->delete();
+ 
+        Log::info('WORKING');
+ 
+ 
+        return "zaml";
+         
+     }
+
+
+
+     public function lhwa(){
+        
+        Log::info('WORKINGAAA');
+
+        return "zbi";
+     }
+
+    
 }
