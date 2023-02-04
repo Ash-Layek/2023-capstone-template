@@ -33,6 +33,8 @@ class CategoryController extends Controller
     public function create()
     {
         return view('categories.create');
+
+       
     }
 
     /**
@@ -66,7 +68,28 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::find($id);
+
+        $category->delete();
+
+    
+        return redirect()->route('categories.index');
+    }
+
+    
+      /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function destroy($id)
+    {
+       
+
+     return  "ntaya zaml";
+
     }
 
     /**
@@ -114,27 +137,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-     {
-         //$category = Category::find($id);
- 
-         //$category->delete();
- 
-        Log::info('WORKING');
- 
- 
-        return "zaml";
-         
-     }
+   
 
 
 
-     public function lhwa(){
-        
-        Log::info('WORKINGAAA');
-
-        return "zbi";
-     }
-
+    
     
 }

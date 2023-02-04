@@ -37,7 +37,7 @@ Laravel Project
 				<tbody>
 			
 					@foreach ($categories as $category)
-					<form method="post" action="{{route('delete', $category->id)}}">
+				
 						<tr>
 							<th>{{ $category->id }}</th>
 							<td>{{ $category->name }}</td>
@@ -45,9 +45,9 @@ Laravel Project
 							<td style='width:100px;'>{{ date('M j, Y', strtotime($category->updated_at)) }}</td>
 							<td style='width:150px;'><div style='float:left; margin-right:5px;'><a href="{{ route('categories.edit', $category->id) }}" class="btn btn-success btn-sm">Edit</a></div><div style='float:left;'></div>
 						
-							<td style='width:150px;'><div style='float:left; margin-right:5px;'><button type="subm"  class="btn btn-danger btn-sm">Delete</a></div><div style='float:left;'></div>
+							<td style='width:150px;'><div style='float:left; margin-right:5px;'><a href="{{ route('categories.show', $category->id) }}" class="btn btn-danger  btn-sm">Delete</a></div><div style='float:left;'></div>
 							</td>
-                           </form>
+                      
 						</tr>
 					@endforeach
 				</tbody>

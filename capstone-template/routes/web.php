@@ -28,7 +28,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('categories/{$id}/deletion', [CategoryController::class, 'destroy'])->name('delete');
+
+
+
 
 
 
