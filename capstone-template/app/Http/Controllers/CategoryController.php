@@ -68,9 +68,32 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::find($id);
 
-        $category->delete();
+
+        $item = Item::all();
+
+
+        forEach($item as $i){
+
+            if ($i->category_id != $id){
+
+                $category = Category::find($id);
+
+                $category->delete();
+                
+            } else {
+
+
+                return "Category already used by an item";
+            }
+
+
+        }
+
+        
+
+
+       
 
     
         return redirect()->route('categories.index');
