@@ -1,3 +1,10 @@
+
+
+<script src="//cdn.ckeditor.com/4.16.2/full/ckeditor.js"></script>
+<script>
+    CKEDITOR.replaceClass = 'ckeditor';
+</script>
+
 @extends('common') 
 
 @section('pagetitle')
@@ -40,7 +47,7 @@ Laravel Project
 				</select>
 
 			    {{ Form::label('description', 'Description:', ['style'=>'margin-top:20px']) }}
-			    {{ Form::textarea('description', null, ['class'=>'form-control', 
+			    {{ Form::textarea('description', null, ['class'=>'ckeditor', 
 				                                 'data-parsley-required'=>'']) }}
 
 				{{ Form::label('price', 'Price:', ['style'=>'margin-top:20px']) }}
