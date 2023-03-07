@@ -18,6 +18,7 @@ class CategoryController extends Controller
 
    
 
+    
 
     public function index()
     {
@@ -153,6 +154,9 @@ class CategoryController extends Controller
         return redirect()->route('categories.index');
         
     }
+
+
+    
 
     /**
      * Remove the specified resource from storage.

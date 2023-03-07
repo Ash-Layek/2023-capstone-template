@@ -22,6 +22,12 @@ class ItemController extends Controller
         return view('items.index')->with('items', $items);
     }
 
+
+   public function __construct()
+   {
+    
+    $this->middleware('auth');
+   }
     /**
      * Show the form for creating a new resource.
      *
