@@ -23,6 +23,7 @@ class ItemController extends Controller
     }
 
 
+
    public function __construct()
    {
     
@@ -37,6 +38,18 @@ class ItemController extends Controller
     {
         $categories = Category::all()->sortBy('name');
         return view('items.create')->with('categories',$categories);
+    }
+
+
+    public function productlist(){
+
+
+        $categories = Category::all()->sortBy('name');
+
+        $items = Item::all()->sortBy('title');
+        
+        return view('productlist.products')->with('categories', $categories)->with('items', $items);
+
     }
 
     /**
