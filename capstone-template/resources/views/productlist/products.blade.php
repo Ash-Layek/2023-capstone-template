@@ -29,15 +29,17 @@ Laravel Project
 	
         <tr>
 		
-          <td>{{ $item->title }}</td>
-		  <td>{{ $item->price }}</td>
+		<td><a href="{{ route('product.details', ['id' => $item->id]) }}">{{ $item->title }}</a></td>
+
+		  <td>{{$item->price}}</td>
 		  <td>
             @if (Storage::disk('public')->exists('images/items/' . $item->picture))
-                <img src="{{ asset('storage/images/items/' . $item->picture) }}" alt="{{ $item->title }} " width="100" />
+             <a href="{{ route('product.details', ['id' => $item->id]) }}"><img  src="{{ asset('storage/images/items/' . $item->picture) }}" alt="{{ $item->title }} " width="100" /></a>
             @else
                 No image available
             @endif
 
+            </td>
 			<td><button> Buy now </button></td>
         </td>
 		 

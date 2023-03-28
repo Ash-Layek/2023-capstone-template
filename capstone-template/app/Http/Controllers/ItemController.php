@@ -8,6 +8,7 @@ use App\Models\Item;
 use Image;
 use Storage;
 use Session;
+use Illuminate\Support\Facades\Log;
 
 class ItemController extends Controller
 {
@@ -40,6 +41,18 @@ class ItemController extends Controller
         return view('items.create')->with('categories',$categories);
     }
 
+
+    public function productdetails($id){
+
+
+        $items = Item::find($id);
+
+
+        Log::debug('HAIR',[$items]);
+
+
+        return view('productlist.productdetails', ['items' => $items]);
+    }
 
     public function productlist(){
 
