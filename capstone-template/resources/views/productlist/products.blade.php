@@ -15,6 +15,8 @@ Laravel Project
 
 <div class="row">
   <div class="col-md-8 col-md-offset-0 ">
+    <h1>{{session()->get('ip')}}</h1>
+    <p>{{session()->getId()}}</p>
     <table class="table">
       @foreach ($categories as $item)    
         <tr>
@@ -40,7 +42,8 @@ Laravel Project
             @endif
 
             </td>
-			<td><button> Buy now </button></td>
+           <td> <a class="btn btn-primary" href="{{ route('Cart', ['id' => $item->id]) }}">Add to Cart</a></td>
+
         </td>
 		 
 		  

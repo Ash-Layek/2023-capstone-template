@@ -32,6 +32,10 @@ Route::get('/productlist' ,[App\Http\Controllers\ItemController::class, 'product
 
 Route::get('/product/{id}', [App\Http\Controllers\ItemController::class, 'productdetails'])->name('product.details');
 
+Route::get('/cart/{id}', [App\Http\Controllers\ItemController::class, 'shoppingcart'])->name('Cart');
+
+
+
 
 
 

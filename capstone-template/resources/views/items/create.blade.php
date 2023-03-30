@@ -48,7 +48,7 @@ Laravel Project
 
 			    {{ Form::label('description', 'Description:', ['style'=>'margin-top:20px']) }}
 			    {{ Form::textarea('description', null, ['class'=>'ckeditor', 
-				                                 'data-parsley-required'=>'']) }}
+				                                 ]) }}
 
 				{{ Form::label('price', 'Price:', ['style'=>'margin-top:20px']) }}
 			    {{ Form::text('price', null, ['class'=>'form-control', 'style'=>'', 

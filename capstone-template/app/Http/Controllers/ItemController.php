@@ -42,10 +42,41 @@ class ItemController extends Controller
     }
 
 
-    public function productdetails($id){
+
+    public function shoppingcart($id){
+
+
+
+          $session = session()->getId();
+
+        $ip = request()->ip();
+
+        session()->put('ip', $ip);
+
+
+        $storedip = session('ip');
+
+
+        return view('cart.totalcart')->with('ID', $id);
+    }
+
+    public function productdetails(Request $request,$id){
+
+
+       
+       
 
 
         $items = Item::find($id);
+
+        $session = session()->getId();
+
+        $ip = request()->ip();
+
+        session()->put('ip', $ip);
+
+
+        $storedip = session('ip');
 
 
         Log::debug('HAIR',[$items]);
@@ -54,12 +85,31 @@ class ItemController extends Controller
         return view('productlist.productdetails', ['items' => $items]);
     }
 
+
+
+
+    
+    
+
     public function productlist(){
+
 
 
         $categories = Category::all()->sortBy('name');
 
         $items = Item::all()->sortBy('title');
+
+        $session = session()->getId();
+
+        $ip = request()->ip();
+
+        session()->put('ip', $ip);
+
+
+        $storedip = session('ip');
+
+
+        Log::debug("HAHOWA", [session()->getId()]);
         
         return view('productlist.products')->with('categories', $categories)->with('items', $items);
 
@@ -78,7 +128,7 @@ class ItemController extends Controller
         // if fails, defaults to create() passing errors
         $this->validate($request, ['title'=>'required|string|max:255',
                                    'category_id'=>'required|integer|min:0',
-                                   'description'=>'required|string',
+                                   'description'=>'required|',
                                    'price'=>'required|numeric',
                                    'quantity'=>'required|integer',
                                    'sku'=>'required|string|max:100',
