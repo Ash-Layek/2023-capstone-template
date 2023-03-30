@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Item;
+use App\Models\shopping_cart;
 use Image;
 use Storage;
 use Session;
@@ -47,17 +48,75 @@ class ItemController extends Controller
 
 
 
+
+        $shoppingcart = new shopping_cart();
+
+    
+
+
+       
+        // find seee if we have session, then check if we have item_id, then update quantity by 1
+
+        
+
+
           $session = session()->getId();
 
         $ip = request()->ip();
 
         session()->put('ip', $ip);
 
-
         $storedip = session('ip');
 
+        $shoppingcart->item_id = $id;
 
-        return view('cart.totalcart')->with('ID', $id);
+        $shoppingcart->session_id = $session;
+
+        $shoppingcart->IP_address = $storedip;
+
+        $shoppingcart->quantity = 1;
+
+
+        $shoppingcart->save();
+
+
+
+
+       
+       $itemsForUser = $shoppingcart::where('session_id', $session)->get();
+
+
+       $listOfItems = [];
+       $count = 0;
+        foreach($itemsForUser as $item){
+
+
+            
+            $listOfItems[$count] = $item->item_id;
+            $count++;
+
+        }
+       
+        
+        $itemsDetails = [];
+        $itemsSize = count($listOfItems);
+
+     
+
+        
+        $itemsDetails = Item::whereIn('id', $listOfItems)->get();
+
+
+
+        Log::debug($itemsDetails);
+        
+
+        
+
+        
+
+
+        return view('cart.totalcart')->with('ID', $itemsForUser)->with('listofitems', $listOfItems);
     }
 
     public function productdetails(Request $request,$id){
