@@ -44,23 +44,22 @@ class ItemController extends Controller
 
 
 
-    public function shoppingcart($id){
+    public function shoppingcart(Request $request){
 
 
-
+       $id = $request->get('id');
 
         $shoppingcart = new shopping_cart();
 
     
-
-
-       
         // find seee if we have session, then check if we have item_id, then update quantity by 1
 
         
 
-
           $session = session()->getId();
+
+
+         
 
         $ip = request()->ip();
 
@@ -86,12 +85,15 @@ class ItemController extends Controller
        $itemsForUser = $shoppingcart::where('session_id', $session)->get();
 
 
+
+       
+        
+
        $listOfItems = [];
        $count = 0;
         foreach($itemsForUser as $item){
 
 
-            
             $listOfItems[$count] = $item->item_id;
             $count++;
 
@@ -108,15 +110,16 @@ class ItemController extends Controller
 
 
 
-        Log::debug($itemsDetails);
-        
+
+        Log::debug("briwa", [$itemsDetails]);
+
+    
 
         
-
         
 
 
-        return view('cart.totalcart')->with('ID', $itemsForUser)->with('listofitems', $listOfItems);
+        return view('cart.totalcart')->with('ID', $itemsForUser)->with('listofitems', $itemsDetails);
     }
 
     public function productdetails(Request $request,$id){
