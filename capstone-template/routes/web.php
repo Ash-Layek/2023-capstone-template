@@ -30,11 +30,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/productlist' ,[App\Http\Controllers\ItemController::class, 'productlist'])->name('productlist');
 
+Route::get('/productlist/{id}', [App\Http\Controllers\CategoryController::class, 'chosenCategory'])->name('chosenCategory');
+
 Route::get('/product/{id}', [App\Http\Controllers\ItemController::class, 'productdetails'])->name('product.details');
 
 Route::get('/cart', [App\Http\Controllers\ItemController::class, 'shoppingcart'])->name('Cart');
 
 Route::post('/cart', [App\Http\Controllers\CartController::class, 'update_cart'])->name('update_cart');
+
+
+
+
 
 
 

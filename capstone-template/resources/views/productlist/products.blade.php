@@ -20,7 +20,7 @@ Laravel Project
     <table class="table">
       @foreach ($categories as $item)    
         <tr>
-          <td><a href="">{{ $item->name }}</a></td>
+          <td><a href="{{route('chosenCategory', ['id'=>$item->id])}}">{{ $item->name }}</a></td>
         </tr> 
       @endforeach
     </table>

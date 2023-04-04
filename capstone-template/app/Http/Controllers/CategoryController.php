@@ -155,6 +155,21 @@ class CategoryController extends Controller
         
     }
 
+    
+    public function chosenCategory($id){
+
+
+
+
+        $Categories = Category::all();
+
+        $listRelatedToCategory = Item::where('category_id', $id)->get();
+
+
+    
+        return view('productlist.products')->with('categories', $Categories)->with('items', $listRelatedToCategory);
+    }
+
 
     
 
