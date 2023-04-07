@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-USE App\Models\shopping_cart;
+use App\Models\shopping_cart;
+use App\Models\order_info;
 use App\Models\Item;
 use Session;
 use Illuminate\Support\Facades\Log;
@@ -66,13 +67,53 @@ class CartController extends Controller
 
     }
 
-    public function check_order(){
+    public function check_order(Request $request){
 
 
 
 
 
-        return 'lhwa';
+        $name = $request->get('first_name');
+
+        $lname = $request->get('last_name');
+
+        $phone = $request->get('phone');
+
+        $email = $request->get('email');
+
+        $sessionID = $request->get('session_id');
+
+        $IP = $request->get('ip');
+
+
+
+        $orderInfo = new order_info();
+
+        $orderInfo->firstname = $name;
+
+        $orderInfo->lastname = $lname;
+        
+        $orderInfo->email = $email;
+
+        $orderInfo->phone = $phone;
+
+        $orderInfo->session_id = $sessionID;
+
+        $orderInfo -> ip = $IP;
+
+
+        $orderInfo->save();
+
+
+        return 'inerted';
+
+
+
+
+
+
+
+        
 
 
     }

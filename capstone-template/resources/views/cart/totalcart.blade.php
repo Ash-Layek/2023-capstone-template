@@ -77,6 +77,10 @@ Laravel Project
 {{ Form::label('email', 'Email:') }}
 {{ Form::email('email', null, ['class'=>'form-control', 'style'=>'', 'required'=>'required', 'data-parsley-type'=>'email']) }}
 
+{{ Form::hidden('session_id', session()->getId()) }}
+{{ Form::hidden('ip', session()->get('ip')) }}
+
+
 {{ Form::submit('Submit', ['class'=>'btn btn-success btn-lg btn-block', 'style'=>'margin-top:20px']) }}
 
 {!! Form::close() !!}
