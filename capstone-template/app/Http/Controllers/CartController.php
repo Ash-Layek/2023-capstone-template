@@ -66,6 +66,17 @@ class CartController extends Controller
 
     }
 
+    public function check_order(){
+
+
+
+
+
+        return 'lhwa';
+
+
+    }
+
 
 
 

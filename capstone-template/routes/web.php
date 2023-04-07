@@ -38,6 +38,8 @@ Route::get('/cart', [App\Http\Controllers\ItemController::class, 'shoppingcart']
 
 Route::post('/cart', [App\Http\Controllers\CartController::class, 'update_cart'])->name('update_cart');
 
+Route::post('/check_order', [App\Http\Controllers\CartController::class, 'check_order'])->name('check_order');
+
 
 
 
